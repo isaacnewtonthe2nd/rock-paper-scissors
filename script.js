@@ -13,3 +13,8 @@ function getComputerChoice () {
 
   return computerChoice;
 }
+
+function getHumanChoice () {
+  let humanChoice = prompt("Rock, Paper, or Scissors. Type your move it below: ");
+  return humanChoice;
+}
