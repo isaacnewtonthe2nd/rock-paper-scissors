@@ -21,3 +21,34 @@ function getHumanChoice () {
   let humanChoice = prompt("Rock, Paper, or Scissors. Type your move it below: ");
   return humanChoice;
 }
+
+function playRound (humanChoice, computerChoice) {
+  let playerMove = humanChoice.toUpperCase();
+  let computerMove = computerChoice.toUpperCase();
+
+  if (playerMove === "ROCK" && computerMove === "ROCK") {
+    console.log("Tie!");
+  } else if (playerMove === "ROCK" && computerMove === "PAPER") {
+    console.log("You lose! Paper beats Rock");
+    computerScore++;
+  } else if (playerMove === "ROCK" && computerMove === "SCISSORS") {
+    console.log("You win! Rock beats Scissors");
+    humanScore++;
+  } else if (playerMove === "PAPER" && computerMove === "ROCK") {
+    console.log("You win! Paper beats Rock");
+    humanScore++;
+  } else if (playerMove === "PAPER" && computerMove === "PAPER") {
+    console.log("Tie!");
+  } else if (playerMove === "PAPER" && computerMove === "SCISSORS") {
+    console.log("You lose! Scissors beats Paper");
+    computerScore++;
+  } else if (playerMove === "SCISSORS" && computerMove === "ROCK") {
+    console.log("You lose! Rock beats Scissors");
+    computerScore++;
+  } else if (playerMove === "SCISSORS" && computerMove === "PAPER") {
+    console.log("You win! Scissors beats Paper");
+    humanScore++;
+  } else if (playerMove === "SCISSORS" && computerMove === "SCISSORS") {
+    console.log("Tie!");
+  }
+}
