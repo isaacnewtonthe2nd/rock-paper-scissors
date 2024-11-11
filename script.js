@@ -1,7 +1,8 @@
+/*
 function playGame () {
   let humanScore = 0;
   let computerScore = 0;
-  let roundCount = 0;
+  //let roundCount = 0;
 
   function playRound (humanChoice, computerChoice) {
     let playerMove = humanChoice.toUpperCase(); //makes the user's input case insensitive
@@ -30,10 +31,10 @@ function playGame () {
     }
   }
 
-  for (let i = 0; i < 5; i++) {  //loops the game to play 5 times
-    playRound(getHumanChoice(), getComputerChoice());
-    roundCount++;
-  }
+  //for (let i = 0; i < 5; i++) {  //loops the game to play 5 times
+  //  playRound(getHumanChoice(), getComputerChoice());
+  //  roundCount++;
+  //}
 
   if (roundCount === 5 && humanScore > computerScore) {  //Compares final scores to declares the winner
     alert(`Game Over. You are the Victor!\nYou: ${humanScore}. Computer: ${computerScore}\nRefresh the page to play again.`);
@@ -42,6 +43,68 @@ function playGame () {
   } else {
     alert(`Game Over. Its a Tie!\nYou: ${humanScore}. Computer: ${computerScore}\nRefresh the page to play again.`)
   }
+}
+  */
+
+let game = document.querySelector("#game");
+
+game.addEventListener("click", (event) => {
+  let target = event.target;
+
+  switch(target.id) {
+    case 'rock':
+      playRound("rock", getComputerChoice());
+      break;
+    case 'paper':
+      playRound("paper", getComputerChoice());
+      break;
+    case 'scissors':
+      playRound("scissors", getComputerChoice());
+      break;
+  }
+});
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound (humanChoice, computerChoice) {
+  let playerMove = humanChoice.toUpperCase(); //makes the user's input case insensitive
+  let computerMove = computerChoice.toUpperCase();
+
+  if (playerMove === computerMove) {  //prompts the user to play the game then displays the result.
+    alert(`Tie!\nYou: ${humanScore}. Computer: ${computerScore}`);
+  } else if (playerMove === "ROCK" && computerMove === "PAPER") {
+    computerScore++;
+    alert(`You lose! Paper beats Rock\nYou: ${humanScore}. Computer: ${computerScore}`);
+  } else if (playerMove === "ROCK" && computerMove === "SCISSORS") {
+    humanScore++;
+    alert(`You win! Rock beats Scissors\nYou: ${humanScore}. Computer: ${computerScore}`);
+  } else if (playerMove === "PAPER" && computerMove === "ROCK") {
+    humanScore++;
+    alert(`You win! Paper beats Rock\nYou: ${humanScore}. Computer: ${computerScore}`);
+  } else if (playerMove === "PAPER" && computerMove === "SCISSORS") {
+    computerScore++;
+    alert(`You lose! Scissors beats Paper\nYou: ${humanScore}. Computer: ${computerScore}`);
+  } else if (playerMove === "SCISSORS" && computerMove === "ROCK") {
+    computerScore++;
+    alert(`You lose! Rock beats Scissors\nYou: ${humanScore}. Computer: ${computerScore}`);
+  } else if (playerMove === "SCISSORS" && computerMove === "PAPER") {
+    humanScore++;
+    alert(`You win! Scissors beats Paper\nYou: ${humanScore}. Computer: ${computerScore}`);
+  }
+}
+
+//for (let i = 0; i < 5; i++) {  //loops the game to play 5 times
+//  playRound(getHumanChoice(), getComputerChoice());
+//  roundCount++;
+//}
+
+if (roundCount === 5 && humanScore > computerScore) {  //Compares final scores to declares the winner
+  alert(`Game Over. You are the Victor!\nYou: ${humanScore}. Computer: ${computerScore}\nRefresh the page to play again.`);
+} else if (roundCount === 5 && computerScore > humanScore) {
+  alert(`Game Over. You lose!\nYou: ${humanScore}. Computer: ${computerScore}\nRefresh the page to play again.`)
+} else {
+  alert(`Game Over. Its a Tie!\nYou: ${humanScore}. Computer: ${computerScore}\nRefresh the page to play again.`)
 }
 
 function getComputerChoice () {
@@ -60,9 +123,9 @@ function getComputerChoice () {
   return computerChoice;
 }
 
+/*
 function getHumanChoice () { //prompts the user to input their move
   let humanChoice = prompt("Rock, Paper, or Scissors. Type your move below: ");
   return humanChoice;
 }
-
-playGame();
+*/
